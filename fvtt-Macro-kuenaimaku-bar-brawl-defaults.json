@@ -1,0 +1,19 @@
+{
+  "name": "Kuenaimaku Bar Brawl Defaults",
+  "type": "script",
+  "author": "IWEEQN2wPivwMifx",
+  "img": "icons/svg/dice-target.svg",
+  "scope": "global",
+  "command": "const bars = {\n\thp: {\n\t\tid: \"hp\",\n\t\tignoreMin: true,\n\t\tignoreMax: false,\n\t\tmincolor: \"#FF0000\",\n\t\tmaxcolor: \"#80FF00\",\n\t\tposition: \"bottom-inner\",\n\t\tattribute: \"derived.hp\",\n\t\tvisibility: 50,\n\t\tindentLeft: 30,\n\t\tindentRight: null,\n\t\tshareHeight: true,\n\t\totherVisibility: 30,\n\t\townerVisibility: -1,\n\t\tgmVisibility: -1,\n\t\tstyle: \"fraction\",\n\t\tlabel: \"\",\n\t\tinvert: false,\n\t\tsubdivisions: null,\n\t\tsubdivisionsOwner: false,\n\t\tfgImage: \"\",\n\t\tbgImage: \"\",\n\t\topacity: null,\n\t\torder: 0,\n\t\tmax: null\n},\nstructure: {\n\t\tid: \"structure\",\n\t\tattribute: \"derived.structure\",\n\t\tmincolor: \"#1F9EFF\",\n\t\tmaxcolor: \"#1F9EFF\",\n\t\tposition: \"bottom-inner\",\n\t\tvisibility: 50,\n\t\tindentLeft: null,\n\t\tindentRight: 70,\n\t\tshareHeight: true,\n\t\tsubdivisions: 4,\n\t\tsubdivisionsOwner: true,\n\t\torder: 1,\n\t\totherVisibility: 30,\n\t\townerVisibility: -1\n},\nstress: {\n\t\tid: \"stress\",\n\t\tmincolor: \"#FF7B00\",\n\t\tmaxcolor: \"#FF7B00\",\n\t\tposition: \"bottom-outer\",\n\t\tattribute: \"derived.stress\",\n\t\tvisibility: 50,\n\t\tindentLeft: null,\n\t\tindentRight: 70,\n\t\tshareHeight: true,\n\t\tsubdivisions: 4,\n\t\tsubdivisionsOwner: true,\n\t\torder: 2,\n\t\totherVisibility: 30,\n\t\townerVisibility: -1\n},\nheat: {\n\t\tid: \"heat\",\n\t\tignoreMax: true,\n\t\tignoreMin: false,\n\t\tmincolor: \"#700000\",\n\t\tmaxcolor: \"#ff0000\",\n\t\tposition: \"bottom-outer\",\n\t\tattribute: \"derived.heat\",\n\t\tvisibility: 50,\n\t\tindentLeft: 30,\n\t\tindentRight: 0,\n\t\tshareHeight: true,\n\t\totherVisibility: 30,\n\t\townerVisibility: -1,\n\t\tgmVisibility: -1,\n\t\tstyle: \"fraction\",\n\t\tlabel: \"\",\n\t\tinvert: false,\n\t\tsubdivisions: null,\n\t\tsubdivisionsOwner: false,\n\t\tfgImage: \"\",\n\t\tbgImage: \"\",\n\t\topacity: null,\n\t\torder: 3,\n\t\tmax: null\n},\nburn: {\n\t\tid: \"burn\",\n\t\tmincolor: \"#992222\",\n\t\tmaxcolor: \"#992222\",\n\t\tposition: \"top-outer\",\n\t\tattribute: \"burn\",\n\t\tvisibility: 50,\n\t\torder: 4,\n\t\tmax: null,\n\t\totherVisibility: 50,\n\t\townerVisibility: -1\n},\novershield: {\n\t\tid: \"overshield\",\n\t\tmincolor: \"#222299\",\n\t\tmaxcolor: \"#222299\",\n\t\tposition: \"top-outer\",\n\t\tattribute: \"overshield\",\n\t\tvisibility: 50,\n\t\torder: 5,\n\t\tmax: null,\n\t\totherVisibility: 50,\n\t\townerVisibility: -1\n\t}\n};\n\nawait game.settings.set(\"barbrawl\", \"defaultResources\", bars);\n\n// :warning: Reset all actors' prototype token bars\nawait Promise.all(game.actors.map(a => a.update({ \"token.flags.barbrawl.-=resourceBars\": null })));\n\n// Reset the bars on all existing tokens\nawait Promise.all(\n  game.scenes.map(s => {\n    const updates = s.tokens.map(t => {\n      return {\n        _id: t.id,\n        \"flags.barbrawl.resourceBars\": bars,\n      };\n    });\n    return s.updateEmbeddedDocuments(\"Token\", updates);\n  })\n);\n\nui.notifications.info(\"Done\");",
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "exportSource": {
+      "world": "lancer-wallflower",
+      "system": "lancer",
+      "coreVersion": "9.269",
+      "systemVersion": "1.2.0"
+    }
+  }
+}
