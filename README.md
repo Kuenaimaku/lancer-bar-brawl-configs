@@ -1,4 +1,4 @@
-# lancer-bar-brawl-configs
+# LANCER Bar Brawl Configs
 a repo containing multiple bar brawl configs intended to be used with the LANCER FoundryVTT System.
 
 ## Requirements
