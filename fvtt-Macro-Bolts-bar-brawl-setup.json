@@ -1,0 +1,19 @@
+{
+  "name": "Bar Brawl Setup",
+  "type": "script",
+  "author": "bHe9TYjLbDi3QSzg",
+  "img": "icons/svg/dice-target.svg",
+  "scope": "global",
+  "command": "// Run this as a script macro in a world to set up the barbrawl defaults for that world, reset all actors' bars to that and set all places tokens to the new bars.\nconst bars = {\n  bar1: {\n    id: \"bar1\",\n    ignoreMin: true,\n    ignoreMax: false,\n    mincolor: \"#FF0000\",\n    maxcolor: \"#80FF00\",\n    position: \"bottom-inner\",\n    attribute: \"derived.hp\",\n    visibility: CONST.TOKEN_DISPLAY_MODES.ALWAYS,\n  },\n  bar2: {\n    id: \"bar2\",\n    ignoreMax: true,\n    ignoreMin: false,\n    mincolor: \"#700000\",\n    maxcolor: \"#ff0000\",\n    position: \"bottom-inner\",\n    attribute: \"derived.heat\",\n    visibility: CONST.TOKEN_DISPLAY_MODES.ALWAYS,\n  },\n  burn: {\n    id: \"burn\",\n    mincolor: \"#992222\",\n    maxcolor: \"#992222\",\n    position: \"top-outer\",\n    attribute: \"burn\",\n    visibility: CONST.TOKEN_DISPLAY_MODES.ALWAYS,\n  },\n  overshield: {\n    id: \"overshield\",\n    mincolor: \"#222299\",\n    maxcolor: \"#222299\",\n    position: \"top-outer\",\n    attribute: \"overshield\",\n    visibility: CONST.TOKEN_DISPLAY_MODES.ALWAYS,\n  },\n};\n\nawait game.settings.set(\"barbrawl\", \"defaultResources\", bars);\n\n// :warning: Reset all actors' prototype token bars\nawait Promise.all(game.actors.map(a => a.update({ \"token.flags.barbrawl.-=resourceBars\": null })));\n\n// Reset the bars on all existing tokens\nawait Promise.all(\n  game.scenes.map(s => {\n    const updates = s.tokens.map(t => {\n      return {\n        _id: t.id,\n        \"flags.barbrawl.resourceBars\": bars,\n      };\n    });\n    return s.updateEmbeddedDocuments(\"Token\", updates);\n  })\n);\n\nui.notifications.info(\"Done\");\n// vim:ft=javascript:",
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "exportSource": {
+      "world": "valk-lancer",
+      "system": "lancer",
+      "coreVersion": "9.269",
+      "systemVersion": "1.2.0"
+    }
+  }
+}

@@ -31,3 +31,27 @@ ___
 ### [Kuenaimaku](fvtt-Macro-kuenaimaku-bar-brawl-defaults.json)
 
 ![Kuenaimaku-Bar-Brawl-Config-Example](kuenaimaku-bar-brawl-defaults.png)
+
+### [Bolts](fvtt-Macro-Bolts-bar-brawl-setup.json)
+Top bars:
+- Overshield
+- Burn
+
+Bottom bars:
+- Heat
+- HP
+
+![Bolts-Bar-Brawl-Config-Example](Bolts-bar-brawl-defaults.png)
+
+### [Valkyrion](fvtt-Macro-Valkyrion-bar-brawl-setup-Kuen-pips.json)
+Note: Requires a modification of Bar Brawl to include a `subdivisionsMatchesMax` to make "pips"
+
+Top bars:
+- Overshield
+- Burn
+
+Bottom bars:
+- Structure|HP
+- Stress|Heat
+
+![Kuenaimaku-Bar-Brawl-Config-Example](Valkyrion-bar-brawl-defaults.png)
