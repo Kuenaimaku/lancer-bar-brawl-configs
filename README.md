@@ -3,7 +3,7 @@ a repo containing multiple bar brawl configs intended to be used with the LANCER
 
 ## Requirements
 
-FoundryVTT  
+FoundryVTT
 Bar-Brawl
 
 ## How to Use this Repo
@@ -55,3 +55,41 @@ Bottom bars:
 - Stress|Heat
 
 ![Kuenaimaku-Bar-Brawl-Config-Example](Valkyrion-bar-brawl-defaults.png)
+
+### [dodgepong](fvtt-Macro-bar-brawl-setup-pips-[dodgepong].json)
+Notes:
+* Requires [a modification of Bar Brawl to include a `subdivisionsMatchesMax` to make "pips"](https://gitlab.com/Kuenaimaku/foundryvtt-bar-brawl/-/tree/feature/approximation-matches-value-max)
+* Requires the "Defaults per type" setting enabled in Bar Brawl
+* Sets NPC bars to "owner-only" visibility and Mech/Pilot bars to "always visible for everyone"
+
+
+
+**Mechs & NPCs**
+
+Top bars:
+- Overshield
+- Burn
+
+Bottom bars:
+- Structure|HP
+- Stress|Heat
+
+**Pilots**
+
+Top bar:
+- Overshield
+
+Bottom bar:
+- HP
+
+**Deployables**
+
+Top bars:
+- Overshield
+- Burn
+
+Bottom bars:
+- HP
+- Heat
+
+![Kuenaimaku-Bar-Brawl-Config-Example](dodgepong-bar-brawl-defaults.png)
