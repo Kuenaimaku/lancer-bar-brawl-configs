@@ -57,9 +57,12 @@ Bottom bars:
 ![Kuenaimaku-Bar-Brawl-Config-Example](Valkyrion-bar-brawl-defaults.png)
 
 ### [dodgepong](fvtt-Macro-bar-brawl-setup-pips-[dodgepong].json)
-Note: Requires a modification of Bar Brawl to include a `subdivisionsMatchesMax` to make "pips"
+Notes:
+* Requires [a modification of Bar Brawl to include a `subdivisionsMatchesMax` to make "pips"](https://gitlab.com/Kuenaimaku/foundryvtt-bar-brawl/-/tree/feature/approximation-matches-value-max)
+* Requires the "Defaults per type" setting enabled in Bar Brawl
+* Sets NPC bars to "owner-only" visibility and Mech/Pilot bars to "always visible for everyone"
 
-Note: Requires the "Defaults per type" setting enabled in Bar Brawl
+
 
 **Mechs & NPCs**
 
