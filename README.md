@@ -25,6 +25,9 @@ Once you find a config you like, click on the link in the readme to be taken to 
 
 ![foundry-directions](foundry-directions.png)
 
+
+### SubdivisionsMatchesMax Configurations
+
 ___
 ## Bar Brawl Configs
 
@@ -43,8 +46,9 @@ Bottom bars:
 
 ![Bolts-Bar-Brawl-Config-Example](Bolts-bar-brawl-defaults.png)
 
-### [Valkyrion](fvtt-Macro-Valkyrion-bar-brawl-setup-Kuen-pips.json)
-Note: Requires a modification of Bar Brawl to include a `subdivisionsMatchesMax` to make "pips"
+### [Valkyrion](fvtt-Macro-Valkyrion-bar-brawl-setup-Kuen-pips.json)  
+Notes:
+* **Requires `SubdivisionsMatchesMax`**
 
 Top bars:
 - Overshield
@@ -58,7 +62,7 @@ Bottom bars:
 
 ### [dodgepong](fvtt-Macro-bar-brawl-setup-pips-[dodgepong].json)
 Notes:
-* Requires [a modification of Bar Brawl to include a `subdivisionsMatchesMax` to make "pips"](https://gitlab.com/Kuenaimaku/foundryvtt-bar-brawl/-/tree/feature/approximation-matches-value-max)
+* **Requires `SubdivisionsMatchesMax`**
 * Requires the "Defaults per type" setting enabled in Bar Brawl
 * Sets NPC bars to "owner-only" visibility and Mech/Pilot bars to "always visible for everyone"
 
