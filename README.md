@@ -30,13 +30,17 @@ Once you find a config you like, click on the link in the readme to be taken to 
 
 If a configuration you like mentions needing `SubdivisionsMatchesMax`, you will need a forked version of bar brawl, provided by this repo. ([Foundry v10](https://github.com/Kuenaimaku/lancer-bar-brawl-configs/blob/master/barbrawl-v1.7.8.zip) | [Foundry v11](https://github.com/Kuenaimaku/lancer-bar-brawl-configs/blob/master/barbrawl-v1.8.6.zip)) leads to a zip file that can be downloaded. the parent folder `barbrawl` should replace your current `barbrawl` folder, generally in the following location: `\FoundryVTT\Data\modules\`
 ___
-## Bar Brawl Configs
+# Bar Brawl Configs
 
-### [Kuenaimaku](fvtt-Macro-kuenaimaku-bar-brawl-defaults.json)
+## Version 11
 
-![Kuenaimaku-Bar-Brawl-Config-Example](kuenaimaku-bar-brawl-defaults.png)
+## Version 10
 
-### [Bolts](fvtt-Macro-Bolts-bar-brawl-setup.json)
+### [Kuenaimaku](v10/fvtt-Macro-kuenaimaku-bar-brawl-defaults.json)
+
+![Kuenaimaku-Bar-Brawl-Config-Example](v10/kuenaimaku-bar-brawl-defaults.png)
+
+### [Bolts](v10/fvtt-Macro-Bolts-bar-brawl-setup.json)
 Top bars:
 - Overshield
 - Burn
@@ -45,9 +49,9 @@ Bottom bars:
 - Heat
 - HP
 
-![Bolts-Bar-Brawl-Config-Example](Bolts-bar-brawl-defaults.png)
+![Bolts-Bar-Brawl-Config-Example](v10/Bolts-bar-brawl-defaults.png)
 
-### [Valkyrion](fvtt-Macro-Valkyrion-bar-brawl-setup-Kuen-pips.json)  
+### [Valkyrion](v10/fvtt-Macro-Valkyrion-bar-brawl-setup-Kuen-pips.json)  
 Notes:
 * **Requires `SubdivisionsMatchesMax`**
 
@@ -59,9 +63,9 @@ Bottom bars:
 - Structure|HP
 - Stress|Heat
 
-![Kuenaimaku-Bar-Brawl-Config-Example](Valkyrion-bar-brawl-defaults.png)
+![Kuenaimaku-Bar-Brawl-Config-Example](v10/Valkyrion-bar-brawl-defaults.png)
 
-### [dodgepong](fvtt-Macro-bar-brawl-setup-pips-[dodgepong].json)
+### [dodgepong](v10/fvtt-Macro-bar-brawl-setup-pips-[dodgepong].json)
 Notes:
 * **Requires `SubdivisionsMatchesMax`**
 * Requires the "Defaults per type" setting enabled in Bar Brawl
@@ -97,4 +101,4 @@ Bottom bars:
 - HP
 - Heat
 
-![Kuenaimaku-Bar-Brawl-Config-Example](dodgepong-bar-brawl-defaults.png)
+![Kuenaimaku-Bar-Brawl-Config-Example](v10/dodgepong-bar-brawl-defaults.png)
