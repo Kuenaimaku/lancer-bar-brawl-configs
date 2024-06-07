@@ -28,11 +28,79 @@ Once you find a config you like, click on the link in the readme to be taken to 
 
 ### SubdivisionsMatchesMax Configurations
 
-If a configuration you like mentions needing `SubdivisionsMatchesMax`, you will need a forked version of bar brawl, provided by this repo. ([Foundry v11](https://gitlab.com/msprijatelj/foundryvtt-bar-brawl/-/archive/v1.8.5-1-v11-extended/foundryvtt-bar-brawl-v1.8.5-1-v11-extended.zip)) leads to a zip file that can be downloaded. the parent folder `barbrawl` should replace your current `barbrawl` folder, generally in the following location: `\FoundryVTT\Data\modules\`
+If a configuration you like mentions needing `SubdivisionsMatchesMax`, you will need a forked version of bar brawl, provided by valkyrion's gitlab repo. ([Foundry v11](https://gitlab.com/msprijatelj/foundryvtt-bar-brawl/-/archive/v1.8.5-1-v11-extended/foundryvtt-bar-brawl-v1.8.5-1-v11-extended.zip)) leads to a zip file that can be downloaded. the parent folder `barbrawl` should replace your current `barbrawl` folder, generally in the following location: `\FoundryVTT\Data\modules\`
 ___
 # Bar Brawl Configs
 
 ## Version 11
+
+### [Kuenaimaku](v11/BB_kuenaimaku_v11.js)
+
+![Kuenaimaku-Bar-Brawl-Config-Example](v10/kuenaimaku-bar-brawl-defaults.png)
+
+### [Bolts](v11/BB_Bolts_v11.js)
+Top bars:
+- Overshield
+- Burn
+
+Bottom bars:
+- Heat
+- HP
+
+![Bolts-Bar-Brawl-Config-Example](v10/Bolts-bar-brawl-defaults.png)
+
+### [Valkyrion](v11/v11/BB_valkyrion_v11.js)  
+Notes:
+* **Requires `SubdivisionsMatchesMax`**
+
+Top bars:
+- Overshield
+- Burn
+
+Bottom bars:
+- Structure|HP
+- Stress|Heat
+
+![Valkyrion-Bar-Brawl-Config-Example](v10/Valkyrion-bar-brawl-defaults.png)
+
+### [dodgepong](v11/BB_dodgepong_v11.js)
+Notes:
+* **Requires `SubdivisionsMatchesMax`**
+* Requires the "Defaults per type" setting enabled in Bar Brawl
+* Sets NPC bars to "owner-only" visibility and Mech/Pilot bars to "always visible for everyone"
+
+
+
+**Mechs & NPCs**
+
+Top bars:
+- Overshield
+- Burn
+
+Bottom bars:
+- Structure|HP
+- Stress|Heat
+
+**Pilots**
+
+Top bar:
+- Overshield
+
+Bottom bar:
+- HP
+
+**Deployables**
+
+Top bars:
+- Overshield
+- Burn
+
+Bottom bars:
+- HP
+- Heat
+
+![dodgepong-Bar-Brawl-Config-Example](v10/dodgepong-bar-brawl-defaults.png)
+
 
 ## Version 10
 
@@ -63,7 +131,7 @@ Bottom bars:
 - Structure|HP
 - Stress|Heat
 
-![Kuenaimaku-Bar-Brawl-Config-Example](v10/Valkyrion-bar-brawl-defaults.png)
+![Valkyrion-Bar-Brawl-Config-Example](v10/Valkyrion-bar-brawl-defaults.png)
 
 ### [dodgepong](v10/fvtt-Macro-bar-brawl-setup-pips-[dodgepong].json)
 Notes:
@@ -101,4 +169,4 @@ Bottom bars:
 - HP
 - Heat
 
-![Kuenaimaku-Bar-Brawl-Config-Example](v10/dodgepong-bar-brawl-defaults.png)
+![dodgepong-Bar-Brawl-Config-Example](v10/dodgepong-bar-brawl-defaults.png)
