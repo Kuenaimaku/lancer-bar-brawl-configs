@@ -49,7 +49,7 @@ Bottom bars:
 
 ![Bolts-Bar-Brawl-Config-Example](v10/Bolts-bar-brawl-defaults.png)
 
-### [Valkyrion](v11/v11/BB_valkyrion_v11.js)  
+### [Valkyrion](v11/BB_valkyrion_v11.js)  
 Notes:
 * **Requires `SubdivisionsMatchesMax`**
 
