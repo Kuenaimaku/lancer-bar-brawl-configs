@@ -114,7 +114,7 @@ Notes:
 - *NPC Structure and Stress are always visible to everyone*
 - *NPC HP and Heat bars are only visible when the NPC is in combat. These bars are also approximated into quarters, reducing PC ability to guess stats without scans*
 
-![Zenn-BB-config-example](v11/bb_Zenn_v11/Zenn-BB-config-example.png)
+![Zenn-BB-config-example](v11/BB_Zenn_v11/Zenn-BB-config-example.png)
 
 ## Version 10
 
