@@ -101,6 +101,21 @@ Bottom bars:
 
 ![dodgepong-Bar-Brawl-Config-Example](v10/dodgepong-bar-brawl-defaults.png)
 
+### [Zenn](v11/BB_Zenn_v11)
+## DISCLAIMER
+- **This configuration uses custom assets for all player Mech and NPC stat bars.**
+- The included macro assumes that all the assets will be in ``Data/assets/bars`` If you place the assets somewhere else, the configuration will not render.
+- If you would like to place the assets somewhere else, you'll need to adjust the ``fgImage`` and ``bgImage`` properties in the included macro.
+- It will update actors as well as tokens in scenes, but not tokens or actors stored in compendiums.
+- It currently returns a bunch of errors to the console when running. I'm not sure why, but it updates all the bars you'd expect.
+
+Notes: 
+- *All PC Bars are always visible to everyone*
+- *NPC Structure and Stress are always visible to everyone*
+- *NPC HP and Heat bars are only visible when the NPC is in combat. These bars are also approximated into quarters, reducing PC ability to guess stats without scans*
+-  *PCs have 3 additional indicators, a battery to show if the core power is available, a trio of "hits" in increasingly threatening colors to show the current penalty for overcharging, and a small bar that shows the number of repairs remaining.
+
+![Zenn-BB-config-example](v11/BB_Zenn_v11/Zenn-BB-config-example.png)
 
 ## Version 10
 
