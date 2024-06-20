@@ -101,7 +101,7 @@ Bottom bars:
 
 ![dodgepong-Bar-Brawl-Config-Example](v10/dodgepong-bar-brawl-defaults.png)
 
-### [Zenn] (v11/BB_Zenn_v11/BB_Zenn_v11.js)
+### [Zenn] (v11/BB_Zenn_v11/)
 ## DISCLAIMER
 - **This configuration uses custom assets for all player Mech and NPC stat bars.**
 - The included macro assumes that all the assets will be in ``Data/assets/bars`` If you place the assets somewhere else, the configuration will not render.
