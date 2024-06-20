@@ -9,8 +9,3 @@ INSTALL STEPS
 2. Open ``ZennBarBrawlConfigV11.js`` and copy the contents. 
 3. Paste them to a new macro in Foundry, make sure to select ``Script`` from the Type dropdown.
 4. Save and Execute the macro. 
-
-NOTES
-o It will take some time for the macro to run. More time if there are more actors in the world. 
-o It will update actors as well as tokens in scenes, but not tokens or actors stored in compendiums.
-o It currently returns a bunch of errors to the console when running. I'm not sure why, but it updates all the bars you'd expect.
