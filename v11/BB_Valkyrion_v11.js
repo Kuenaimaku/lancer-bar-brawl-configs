@@ -104,7 +104,7 @@ const npcBars = {
     subdivisions: 4,
     hideFull: true,
     label: null,
-    style: null
+    style: "none"
   },
   structure: {
     id: "structure",
@@ -157,7 +157,7 @@ const npcBars = {
     subdivisions: 4,
     hideEmpty: true,
     label: null,
-    style: null
+    style: "none"
   },
   burn: {
     id: "burn",
@@ -299,4 +299,4 @@ await Promise.all(
   })
 );
 
-ui.notifications.info("Done");
+ui.notifications.info("Token bar resources updated!");
