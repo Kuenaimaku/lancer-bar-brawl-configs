@@ -28,6 +28,7 @@ const mechBars = {
     indentLeft: null,
     indentRight: 70,
     shareHeight: true,
+    invertDirection: true,
     subdivisions: 4,
     subdivisionsMatchesMax: true,
     subdivisionsOwner: true,
@@ -45,6 +46,7 @@ const mechBars = {
     indentLeft: null,
     indentRight: 70,
     shareHeight: true,
+    invertDirection: true,
     subdivisions: 4,
     subdivisionsMatchesMax: true,
     subdivisionsOwner: true,
@@ -118,6 +120,7 @@ const npcBars = {
     indentLeft: null,
     indentRight: 70,
     shareHeight: true,
+    invertDirection: true,
     subdivisions: 4,
     subdivisionsMatchesMax: true,
     subdivisionsOwner: true,
@@ -135,6 +138,7 @@ const npcBars = {
     indentLeft: null,
     indentRight: 70,
     shareHeight: true,
+    invertDirection: true,
     subdivisions: 4,
     subdivisionsMatchesMax: true,
     subdivisionsOwner: true,
@@ -269,7 +273,31 @@ barConfig['deployable'] = deployableBars;
 await game.settings.set("barbrawl", "defaultTypeResources", barConfig);
 
 // :warning: Reset all actors' prototype token bars
-await Promise.all(game.actors.map(a => a.update({ "token.flags.barbrawl.-=resourceBars": null })));
+await Promise.all(game.actors.map(a => a.update({ "prototypeToken.flags.barbrawl.-=resourceBars": null })));
+
+// Reset the bars on all existing actor Prototype Tokens
+await Promise.all(
+  game.actors.map(a => {
+    let barSettings = mechBars;
+    switch (a.type) {
+      case 'npc':
+        barSettings = npcBars;
+        break;
+      case 'pilot':
+        barSettings = pilotBars;
+        break;
+      case 'deployable':
+        barSettings = deployableBars;
+        break;
+
+      default:
+        break;
+    }
+    a.update({ "prototypeToken.flags.barbrawl.resourceBars": barSettings })
+  })
+);
+
+ui.notifications.info("PrototypeToken bar resources updated!");
 
 // Reset the bars on all existing tokens
 await Promise.all(
