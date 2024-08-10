@@ -327,10 +327,6 @@ const deployableBars = {
   },
 };
 
-
-// Reset all prototype token bars for all actors
-await Promise.all(game.actors.map(a => a.update({ "token.flags.barbrawl.-=resourceBars": null })));
-
 // Apply new bar settings to all prototype tokens
 await Promise.all(game.actors.map(a => {
   let barSettings = mechBars;
@@ -347,20 +343,13 @@ await Promise.all(game.actors.map(a => {
     default:
       break;
   }
-  return a.update({ "token.flags.barbrawl.resourceBars": barSettings });
+  return a.update({ "token.flags.barbrawl.resourceBars": barSettings }, {'diff': false, 'recursive': false});
 }));
 
 // Reset all tokens' bars in all scenes
 await Promise.all(
   game.scenes.map(async s => {
-    // First, reset the bars
-    const resetUpdates = s.tokens.filter(t => t.actor).map(t => ({
-      _id: t.id,
-      "flags.barbrawl.-=resourceBars": null,
-    }));
-    await s.updateEmbeddedDocuments("Token", resetUpdates);
-
-    // Then, apply the new bar settings
+    // Apply the new bar settings
     const updates = s.tokens.filter(t => t.actor).map(t => {
       let barSettings = mechBars;
       switch (t.actor.type) {
@@ -381,7 +370,7 @@ await Promise.all(
         "flags.barbrawl.resourceBars": barSettings,
       };
     });
-    return s.updateEmbeddedDocuments("Token", updates);
+    return s.updateEmbeddedDocuments("Token", updates, {'diff': false, 'recursive': false});
   })
 );
 

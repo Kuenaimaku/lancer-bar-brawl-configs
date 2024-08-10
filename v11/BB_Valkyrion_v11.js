@@ -197,6 +197,19 @@ const pilotBars = {
     label: null,
     style: null
   },
+  bar2: {
+    id: "bar2",
+    ignoreMax: true,
+    ignoreMin: false,
+    mincolor: "#700000",
+    maxcolor: "#ff0000",
+    position: "bottom-outer",
+    attribute: "heat",
+    ownerVisibility: CONST.TOKEN_DISPLAY_MODES.ALWAYS,
+    otherVisibility: CONST.TOKEN_DISPLAY_MODES.ALWAYS,
+    label: null,
+    style: null
+  },
   burn: {
     id: "burn",
     mincolor: "#992222",
@@ -272,9 +285,6 @@ barConfig['deployable'] = deployableBars;
 
 await game.settings.set("barbrawl", "defaultTypeResources", barConfig);
 
-// :warning: Reset all actors' prototype token bars
-await Promise.all(game.actors.map(a => a.update({ "prototypeToken.flags.barbrawl.-=resourceBars": null })));
-
 // Reset the bars on all existing actor Prototype Tokens
 await Promise.all(
   game.actors.map(a => {
@@ -293,7 +303,7 @@ await Promise.all(
       default:
         break;
     }
-    a.update({ "prototypeToken.flags.barbrawl.resourceBars": barSettings })
+    a.update({ "prototypeToken.flags.barbrawl.resourceBars": barSettings }, {'diff': false, 'recursive': false})
   })
 );
 
@@ -323,7 +333,7 @@ await Promise.all(
         "flags.barbrawl.resourceBars": barSettings,
       };
     });
-    return s.updateEmbeddedDocuments("Token", updates);
+    return s.updateEmbeddedDocuments("Token", updates, {'diff': false, 'recursive': false});
   })
 );
 
