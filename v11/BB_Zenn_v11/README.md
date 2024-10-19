@@ -16,3 +16,5 @@ INSTALL STEPS
 2. Open ``ZennBarBrawlConfigV11.js`` and copy the contents. 
 3. Paste them to a new macro in Foundry, make sure to select ``Script`` from the Type dropdown.
 4. Save and Execute the macro. 
+
+![Zenn-BB-config-example](Zenn-BB-config-example.png)
