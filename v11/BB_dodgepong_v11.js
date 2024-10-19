@@ -281,8 +281,27 @@ barConfig['deployable'] = deployableBars;
 
 await game.settings.set("barbrawl", "defaultTypeResources", barConfig);
 
-// :warning: Reset all actors' prototype token bars
-await Promise.all(game.actors.map(a => a.update({ "token.flags.barbrawl.-=resourceBars": null })));
+// Reset the bars on all existing actor Prototype Tokens
+await Promise.all(
+  game.actors.map(a => {
+    let barSettings = mechBars;
+    switch (a.type) {
+      case 'npc':
+        barSettings = npcBars;
+        break;
+      case 'pilot':
+        barSettings = pilotBars;
+        break;
+      case 'deployable':
+        barSettings = deployableBars;
+        break;
+
+      default:
+        break;
+    }
+    a.update({ "prototypeToken.flags.barbrawl.resourceBars": barSettings }, {'diff': false, 'recursive': false})
+  })
+);
 
 // Reset the bars on all existing tokens
 await Promise.all(
@@ -308,7 +327,7 @@ await Promise.all(
         "flags.barbrawl.resourceBars": barSettings,
       };
     });
-    return s.updateEmbeddedDocuments("Token", updates);
+    return s.updateEmbeddedDocuments("Token", updates, {'diff': false, 'recursive': false});
   })
 );
 
