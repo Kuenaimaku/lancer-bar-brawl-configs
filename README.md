@@ -118,7 +118,7 @@ Bottom bars:
 
 > [!NOTE]
 > This configuration hides HP and Heat bars for NPCs outside of combat and approximates the bars into quarters to reduce player knowledge of enemy stats. To make them visible, add the NPC's to combat.
-> to change this behavior, set the ``hideNoCombat:`` value to false and/or the ``hideNoCombat:`` value to ``""`` for ``npcBars`` ``bar1`` and ``bar2`` before triggering the macro.
+> to change this behavior, set the ``hideNoCombat:`` value to false and/or the ``subdivisions:`` value to ``""`` for ``npcBars`` ``bar1`` and ``bar2`` before triggering the macro.
 
 ![Zenn-BB-config-example](v11/BB_Zenn_v11/Zenn-BB-config-example.png)
 
