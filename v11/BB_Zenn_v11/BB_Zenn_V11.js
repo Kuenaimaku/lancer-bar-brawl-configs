@@ -328,8 +328,11 @@ const deployableBars = {
 };
 
 // Apply new bar settings to all prototype tokens
+// Update actor flags without overriding other flags
 await Promise.all(game.actors.map(a => {
-  let barSettings = mechBars;
+  let barSettings;
+
+  // Determine which bar settings to use based on actor type
   switch (a.type) {
     case 'npc':
       barSettings = npcBars;
@@ -341,17 +344,33 @@ await Promise.all(game.actors.map(a => {
       barSettings = deployableBars;
       break;
     default:
+      barSettings = mechBars; // Use mechBars by default
       break;
   }
-  return a.update({ "token.flags.barbrawl.resourceBars": barSettings }, {'diff': false, 'recursive': false});
+
+  // Get existing flags to preserve them
+  const existingFlags = a.flags || {};
+  
+  // Update the actor while preserving the flags
+  return a.update({
+    "flags.barbrawl.resourceBars": barSettings,
+    flags: {
+      ...existingFlags, // Merge existing flags
+      barbrawl: {
+        ...existingFlags.barbrawl,
+        resourceBars: barSettings
+      }
+    }
+  }, { 'diff': false, 'recursive': false });
 }));
 
 // Reset all tokens' bars in all scenes
 await Promise.all(
   game.scenes.map(async s => {
-    // Apply the new bar settings
     const updates = s.tokens.filter(t => t.actor).map(t => {
-      let barSettings = mechBars;
+      let barSettings;
+
+      // Determine which bar settings to use based on token's actor type
       switch (t.actor.type) {
         case 'npc':
           barSettings = npcBars;
@@ -363,14 +382,24 @@ await Promise.all(
           barSettings = deployableBars;
           break;
         default:
+          barSettings = mechBars; // Use mechBars by default
           break;
       }
+
       return {
         _id: t.id,
         "flags.barbrawl.resourceBars": barSettings,
+        flags: {
+          ...t.flags, // Preserve existing token flags
+          barbrawl: {
+            ...t.flags?.barbrawl,
+            resourceBars: barSettings
+          }
+        }
       };
     });
-    return s.updateEmbeddedDocuments("Token", updates, {'diff': false, 'recursive': false});
+
+    return s.updateEmbeddedDocuments("Token", updates, { 'diff': false, 'recursive': false });
   })
 );
 
