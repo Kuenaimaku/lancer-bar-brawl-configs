@@ -55,7 +55,13 @@ ___
 
 ![Zenn-BB-config-example](v11/BB_Zenn_v11/Zenn-BB-config-example.png)
 
-## Version 11
+
+
+
+<details markdown="1">
+  <summary>
+    <h2>Version 11</h2>
+  </summary>
 
 ### [Kuenaimaku](v11/BB_kuenaimaku_v11.js)
 
@@ -143,7 +149,11 @@ Bottom bars:
 
 ![Zenn-BB-config-example](v11/BB_Zenn_v11/Zenn-BB-config-example.png)
 
-## Version 10
+</details>
+<details markdown="1">
+  <summary>
+    <h2>Version 10</h2>
+  </summary>
 
 ### [Kuenaimaku](v10/fvtt-Macro-kuenaimaku-bar-brawl-defaults.json)
 
@@ -211,3 +221,5 @@ Bottom bars:
 - Heat
 
 ![dodgepong-Bar-Brawl-Config-Example](v10/dodgepong-bar-brawl-defaults.png)
+
+</details>
