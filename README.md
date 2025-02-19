@@ -34,10 +34,7 @@ Links to download: [Foundry v10](https://github.com/Kuenaimaku/lancer-bar-brawl-
 ___
 # Bar Brawl Configs
 
-<details markdown="1" open>
-  <summary>
-    <h2>Version 12</h2>
-  </summary>
+## Version 12
 
 ### [Zenn](v11/BB_Zenn_v11)
 > [!IMPORTANT]
@@ -57,7 +54,7 @@ ___
 > to change this behavior, set the ``hideNoCombat:`` value to false and/or the ``subdivisions:`` value to ``""`` for ``npcBars`` ``bar1`` and ``bar2`` before triggering the macro.
 
 ![Zenn-BB-config-example](v11/BB_Zenn_v11/Zenn-BB-config-example.png)
-</details>
+
 
 
 
