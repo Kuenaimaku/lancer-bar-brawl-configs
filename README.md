@@ -34,6 +34,27 @@ Links to download: [Foundry v10](https://github.com/Kuenaimaku/lancer-bar-brawl-
 ___
 # Bar Brawl Configs
 
+## Version 12
+
+### [Zenn](v11/BB_Zenn_v11)
+> [!IMPORTANT]
+> This configuration uses custom asset files for all player Mech and NPC stat bars that you will have to download and place in your default Foundry data directory:
+> ``FoundryVTT/Data/assets/bars`` If you place the assets somewhere else, or do not place them at all, the configuration will not render.
+> If you would like to place the assets somewhere else, you'll need to adjust the ``fgImage`` and ``bgImage`` properties in the included macro.
+
+> [!TIP]
+> Visit https://foundryvtt.com/article/user-data-backup/#move for information on Default User Data Locations
+
+> [!NOTE]
+> The included macro updates actors as well as tokens on scenes, but not tokens or actors stored in compendiums.
+> It also returns a bunch of errors to the console while running.  If you know how to fix that, let me know! -Zenn
+
+> [!NOTE]
+> This configuration hides HP and Heat bars for NPCs outside of combat and approximates the bars into quarters to reduce player knowledge of enemy stats. To make them visible, add the NPC's to combat.
+> to change this behavior, set the ``hideNoCombat:`` value to false and/or the ``subdivisions:`` value to ``""`` for ``npcBars`` ``bar1`` and ``bar2`` before triggering the macro.
+
+![Zenn-BB-config-example](v11/BB_Zenn_v11/Zenn-BB-config-example.png)
+
 ## Version 11
 
 ### [Kuenaimaku](v11/BB_kuenaimaku_v11.js)
