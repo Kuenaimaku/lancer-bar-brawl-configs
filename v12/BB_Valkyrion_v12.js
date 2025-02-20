@@ -30,7 +30,6 @@ const mechBars = {
     shareHeight: true,
     invertDirection: true,
     subdivisions: 4,
-    subdivisionsMatchesMax: true,
     subdivisionsOwner: true,
     label: null,
     style: null
@@ -48,7 +47,6 @@ const mechBars = {
     shareHeight: true,
     invertDirection: true,
     subdivisions: 4,
-    subdivisionsMatchesMax: true,
     subdivisionsOwner: true,
     label: null,
     style: null
@@ -299,15 +297,14 @@ await Promise.all(
     }
 
     // Get existing flags to preserve them
-    const existingFlags = a.flags || {};
+    const existingFlags = a.prototypeToken.flags || {};
 
     // Update the actor while preserving the flags
-    return a.update({
-      "flags.barbrawl.resourceBars": barSettings,
+    return a.prototypeToken.update({
       flags: {
         ...existingFlags, // Merge existing flags
         barbrawl: {
-          ...existingFlags.barbrawl,
+          //...existingFlags.barbrawl,
           resourceBars: barSettings
         }
       }
@@ -341,7 +338,6 @@ await Promise.all(
 
       return {
         _id: t.id,
-        "flags.barbrawl.resourceBars": barSettings,
         flags: {
           ...t.flags, // Preserve existing token flags
           barbrawl: {
