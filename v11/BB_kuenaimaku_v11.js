@@ -103,10 +103,16 @@ await game.settings.set("barbrawl", "defaultTypeResources", bars);
 
 // :warning: Reset all actors' prototype token bars
 await Promise.all(game.actors.map(a => {
+  let target;
+  const v = game.version
+  if (v < "12" && v >= "11") {
+    target = a
+  } else if (v >= "12") {
+    target = a.prototypeToken
+  }
   // Get existing flags to preserve them
-  const existingFlags = a.flags || {};
-  return a.update({
-    "flags.barbrawl.resourceBars": bars,
+  const existingFlags = target.flags || {};
+  return target.update({
     flags: {
       ...existingFlags, // Merge existing flags
       barbrawl: {
@@ -123,7 +129,6 @@ await Promise.all(
     const updates = s.tokens.filter(t => t.actor).map(t => {
       return {
         _id: t.id,
-        "flags.barbrawl.resourceBars": bars,
         flags: {
           ...t.flags, // Preserve existing token flags
           barbrawl: {

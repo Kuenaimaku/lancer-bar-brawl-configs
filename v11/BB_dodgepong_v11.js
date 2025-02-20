@@ -300,12 +300,18 @@ await Promise.all(
         break;
     }
 
+    let target;
+    const v = game.version
+    if (v < "12" && v >= "11") {
+      target = a
+    } else if (v >= "12") {
+      target = a.prototypeToken
+    }
     // Get existing flags to preserve them
-    const existingFlags = a.flags || {};
+    const existingFlags = target.flags || {};
 
     // Update the actor while preserving the flags
-    return a.update({
-      "flags.barbrawl.resourceBars": barSettings,
+    return target.update({
       flags: {
         ...existingFlags, // Merge existing flags
         barbrawl: {
@@ -341,7 +347,6 @@ await Promise.all(
 
       return {
         _id: t.id,
-        "flags.barbrawl.resourceBars": barSettings,
         flags: {
           ...t.flags, // Preserve existing token flags
           barbrawl: {
