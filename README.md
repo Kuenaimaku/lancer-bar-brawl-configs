@@ -60,7 +60,7 @@ ___
 
 <details markdown="1">
   <summary>
-    <h2>Version 11</h2>
+    <h2>Version 11 (unless specified, these should also work in v12)</h2>
   </summary>
 
 ### [Kuenaimaku](v11/BB_kuenaimaku_v11.js)
