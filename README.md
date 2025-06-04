@@ -55,8 +55,33 @@ ___
 
 ![Zenn-BB-config-example](v11/BB_Zenn_v11/Zenn-BB-config-example.png)
 
+### [sarah](v12/BB_sarah_v12.js)
+**Mechs and NPCs**
+Top bars:
+- Structure | HP
+- Stress | Heat
 
+Bottom bars (input box in HUD only, bar is hidden!):
+- Overshield | Burn
 
+**Pilots**
+Top bars:
+- HP (in combat) | Stress (out of combat)
+
+Bottom bars (input box in HUD only, bar is hidden!):
+- Overshield | Burn
+
+**Deployables**
+Top bars:
+- HP
+
+Bottom bars (input box in HUD only, bar is hidden!):
+- Overshield | Burn
+
+**Notes**
+For NPCs and Deployables, the bars themselves are always visible, but the specific value of each is only displayed for the owner. This means that players can only see "estimates" of stats for unowned tokens. This config *does not* auto-set structure and stress pips for NPCs with multiple structure or stress. You must set those manually yourself by changing the "Approximation" number in *all four Stress and Structure bars* to match the number of structure/stress your NPC has.
+
+![sarah-Bar-Brawl-Config-Example](v12/sarah-bar-brawl-defaults.png)
 
 <details markdown="1">
   <summary>
