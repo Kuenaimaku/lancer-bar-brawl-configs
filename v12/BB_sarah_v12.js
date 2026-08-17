@@ -1,4 +1,6 @@
-// Run this as a script macro in a world to set up the barbrawl defaults for that world, reset all actors' bars to that and set all places tokens to the new bars.
+const RESET = false;
+const ACTIVE_SCENE_ONLY = false;
+
 const mechBars = {
     bar1: {
         order: 0,
@@ -683,95 +685,71 @@ const deployableBars = {
     },
 };
 
+function barsForActor(actor) {
+    let baseBarSettings = mechBars;
+
+    switch (actor.type) {
+    case 'npc': baseBarSettings = npcBars; break;
+    case 'pilot': baseBarSettings = pilotBars; break;
+    case 'deployable': baseBarSettings = deployableBars; break;
+    }
+
+    let barSettings = structuredClone(baseBarSettings);
+    if (actor.type === 'npc') {
+        const structureMax = actor.system.structure?.max ?? 1;
+        const stressMax = actor.system.stress?.max ?? 1;
+        barSettings.ownedStructure.subdivisions = structureMax;
+        barSettings.unownedStructure.subdivisions = structureMax;
+        barSettings.bar2.subdivisions = stressMax;
+        barSettings.unownedStress.subdivisions = stressMax;
+    }
+    return barSettings;
+}
+
+function tokenFlagsUpdate(existingFlags, barSettings) {
+    const flags = foundry.utils.deepClone(existingFlags) ?? {};
+    if (RESET)
+        delete flags.barbrawl;
+    flags.barbrawl = { ...flags.barbrawl, resourceBars: barSettings };
+    return flags;
+}
+
+if (!game.user.isGM)
+    return;
+
 const barConfig = game.settings.get("barbrawl", "defaultTypeResources") ?? {};
 barConfig['mech'] = mechBars;
 barConfig['npc'] = npcBars;
 barConfig['pilot'] = pilotBars;
 barConfig['deployable'] = deployableBars;
-
 await game.settings.set("barbrawl", "defaultTypeResources", barConfig);
 
-// Apply new bar settings to all prototype tokens
-await Promise.all(game.actors.map(a => {
-  let target;
-  const v = game.version
-  if (v < "12" && v >= "11") {
-    target = a
-  } else if (v >= "12") {
-    target = a.prototypeToken
-  }
-
-  return target.unsetFlag('barbrawl', 'resourceBars');
-}));
-
-await Promise.all(game.actors.map(a => {
-  let barSettings;
-
-  // Determine which bar settings to use based on actor type
-  switch (a.type) {
-    case 'npc':
-      barSettings = npcBars;
-      break;
-    case 'pilot':
-      barSettings = pilotBars;
-      break;
-    case 'deployable':
-      barSettings = deployableBars;
-      break;
-    default:
-      barSettings = mechBars; // Use mechBars by default
-      break;
-  }
-
-  let target;
-  const v = game.version
-  if (v < "12" && v >= "11") {
-    target = a
-  } else if (v >= "12") {
-    target = a.prototypeToken
-  }
-  
-  return target.setFlag('barbrawl', 'resourceBars', barSettings);
-}));
-
-ui.notifications.info("PrototypeToken bar resources updated!");
-
-// Reset the bars on all existing tokens
+ui.notifications.info("Updating Prototype Tokens...");
 await Promise.all(
-  game.scenes.map(s => {
-    const updates = s.tokens.filter(t => t.actor).map(t => {
-      let barSettings;
-
-      // Determine which bar settings to use based on token's actor type
-      switch (t.actor.type) {
-        case 'npc':
-          barSettings = npcBars;
-          break;
-        case 'pilot':
-          barSettings = pilotBars;
-          break;
-        case 'deployable':
-          barSettings = deployableBars;
-          break;
-        default:
-          barSettings = mechBars; // Use mechBars by default
-          break;
-      }
-
-      return {
-        _id: t.id,
-        flags: {
-          ...t.flags, // Preserve existing token flags
-          barbrawl: {
-            ...t.flags?.barbrawl,
-            resourceBars: barSettings
-          }
-        }
-      };
-    });
-    
-    return s.updateEmbeddedDocuments("Token", updates, { 'diff': false, 'recursive': false });
-  })
+    game.actors.map(async (actor) => {
+        await actor.prototypeToken.unsetFlag('barbrawl', 'resourceBars');
+        return actor.prototypeToken.setFlag('barbrawl', 'resourceBars', barsForActor(actor));
+    })
 );
+ui.notifications.info("PrototypeToken resources updated!");
 
-ui.notifications.info("Token bar resources updated!");
+ui.notifications.info("Updating placed Tokens in all scenes...");
+for (const scene of game.scenes) {
+    if (ACTIVE_SCENE_ONLY && scene !== game.canvas.scene)
+        continue;
+    const updates = scene.tokens.filter(tokenDoc => tokenDoc.actor).map(tokenDoc => {
+        return {
+            _id: tokenDoc.id,
+            flags: tokenFlagsUpdate(tokenDoc.flags, barsForActor(tokenDoc.actor))
+        };
+    });
+
+    if (updates.length > 0) {
+        try {
+            await scene.updateEmbeddedDocuments("Token", updates, { 'diff': false, 'recursive': false });
+        } catch (err) {
+            console.warn(`Lancer BarBrawl Update: Failed to update tokens in scene ${scene.name}`, err);
+        }
+    }
+}
+ui.notifications.info("Token resources updated!");

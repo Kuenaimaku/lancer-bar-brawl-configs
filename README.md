@@ -34,7 +34,7 @@ Links to download: [Foundry v10](https://github.com/Kuenaimaku/lancer-bar-brawl-
 ___
 # Bar Brawl Configs
 
-## Version 12
+## Version 12 (unless specified, these should also work in v13)
 
 ### [Zenn](v11/BB_Zenn_v11)
 > [!IMPORTANT]
@@ -83,13 +83,15 @@ Bottom bars (input box in HUD only, bar is hidden!):
 
 **Notes**
 
-For NPCs and Deployables, the bars themselves are always visible, but the specific value of each is only displayed for the owner. This means that players can only see "estimates" of stats for unowned tokens. This config *does not* auto-set structure and stress pips for NPCs with multiple structure or stress. You must set those manually yourself by changing the "Approximation" number in *all four Stress and Structure bars* to match the number of structure/stress your NPC has.
+This config auto-sets structure and stress pips to their correct values for *existing* NPCs, but not ones created after running the macro. Running the macro again will set the pips for new NPCs. Huge shoutout and thank you to LaSossis in Pilotnet for the addition to the macro that allows this part to work!
+
+For NPCs and Deployables, the bars themselves are always visible, but the specific value of each is only displayed for the owner. This means that players can only see "estimates" of stats for unowned tokens. [Here](v12/BB_sarah_valueupdate.js) you can find a small macro you can use to make the values of a selected token visible to players, useful after they scan said NPC.
 
 ![sarah-Bar-Brawl-Config-Example](v12/sarah-bar-brawl-defaults.png)
 
 <details markdown="1">
   <summary>
-    <h2>Version 11 (unless specified, these should also work in v12)</h2>
+    <h2>Version 11 (unless specified, these should also work in v12 and v13)</h2>
   </summary>
 
 ### [Kuenaimaku](v11/BB_kuenaimaku_v11.js)
